@@ -4,17 +4,21 @@ namespace ObjectLibrary
 {
     public enum ChineseSign
     {
-        Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog, Pig
+        Monkey, Rooster, Dog, Pig, Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat
     }
 
     public static class Utilities
     {
         public static ChineseSign ToChineseSign(this DateTime dob)
         {
-            return ChineseSign.Dog;
+            // todo: this still needs to consider the Chinese New Year isn't 1st January http://www.chinesenewyears.info/chinese-new-year-calendar.php  
+            return (ChineseSign)(dob.Year%12);
         }
     }
 
+    /// <summary>
+    /// The base person class 
+    /// </summary>
     public class Person
     {
         readonly protected string _first;
@@ -24,7 +28,6 @@ namespace ObjectLibrary
 
         public Person(string f, string l, string e, DateTime dt)
         {
-            // todo: ensure that that 
             _first = f;
             _last = l;
             _email = e;
@@ -102,6 +105,7 @@ namespace ObjectLibrary
     {
         public Teacher(string f, string l, string e, DateTime dt) : base(f, l, e, dt)
         {
+            // todo: teacher needs a subject 
         }
 
         public override string ScreenName

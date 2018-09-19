@@ -9,6 +9,7 @@ namespace PersonTests
     public class PersonTests
     {
         IList<Person> _people;
+
         [TestInitialize]
         public void Setup()
         {
@@ -47,6 +48,14 @@ namespace PersonTests
             Assert.AreEqual("JohnSmith1225", _people[1].ScreenName);
             Assert.AreEqual("JoeTeacherStaff", _people[2].ScreenName);
             Assert.AreEqual("JeffStudentU8", _people[3].ScreenName);
+        }
+
+        [TestMethod]
+        public void TestChineseSignLogic()
+        {
+            Assert.AreEqual(new DateTime(2008, 10, 1).ToChineseSign(), ChineseSign.Rat);
+            Assert.AreEqual(new DateTime(2012, 10, 1).ToChineseSign(), ChineseSign.Dragon);
+            Assert.AreEqual(new DateTime(2018, 1, 1).ToChineseSign(), ChineseSign.Rooster, "before Chinese New Year");
         }
     }
 }
