@@ -1,6 +1,8 @@
-﻿namespace Shapes
+﻿using System;
+
+namespace Shapes
 {
-    public interface IShape
+    public interface IShape : IComparable<IShape>
     {
         double Perimeter();
         double Area(); 

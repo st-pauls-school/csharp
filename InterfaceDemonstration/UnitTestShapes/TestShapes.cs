@@ -6,24 +6,43 @@ namespace UnitTestShapes
     [TestClass]
     public class TestShapes
     {
+        IShape sq, ci;
+
+        [TestInitialize]
+        public void Initialise()
+        {
+
+        }
+
         [TestMethod]
         public void TestSquare()
         {
-            IShape  s = new Square(10);
+            sq = new Square(10);
 
-            Assert.AreEqual(40, s.Perimeter());
-            Assert.AreEqual(100, s.Area());
-            Assert.AreEqual(4, s.Sides);
+            Assert.AreEqual(40, sq.Perimeter());
+            Assert.AreEqual(100, sq.Area());
+            Assert.AreEqual(4, sq.Sides);
+
+            Assert.AreEqual("A square of side length 10", sq.ToString());
         }
 
         [TestMethod]
         public void TestCircle()
         {
-            IShape s = new Circle(10);
+            ci = new Circle(10);
 
-            Assert.AreEqual(62.831, s.Perimeter(), 0.001);
-            Assert.AreEqual(314.159, s.Area(), 0.001);
-            Assert.AreEqual(1, s.Sides);
+            Assert.AreEqual(62.831, ci.Perimeter(), 0.001);
+            Assert.AreEqual(314.159, ci.Area(), 0.001);
+            Assert.AreEqual(1, ci.Sides);
+
+            Assert.AreEqual("A circle of radius 10", ci.ToString());
         }
+
+        [TestMethod]
+        public void TestCompare()
+        {
+            Assert.AreEqual(1, sq.CompareTo(ci));
+        }
+
     }
 }
