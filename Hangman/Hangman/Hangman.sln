@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangman", "Hangman\Hangman.csproj", "{2926F95A-F52D-4425-B348-72459BB3151C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangman.Tests", "Hangman.Tests\Hangman.Tests.csproj", "{3F363C16-C099-4466-AB11-61E74959ACA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangman.Game", "Hangman.Game\Hangman.Game.csproj", "{F3FB6DD8-BC92-401E-B8CC-C71B01F47ECB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2926F95A-F52D-4425-B348-72459BB3151C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2926F95A-F52D-4425-B348-72459BB3151C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2926F95A-F52D-4425-B348-72459BB3151C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2926F95A-F52D-4425-B348-72459BB3151C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F363C16-C099-4466-AB11-61E74959ACA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F363C16-C099-4466-AB11-61E74959ACA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F363C16-C099-4466-AB11-61E74959ACA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F363C16-C099-4466-AB11-61E74959ACA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3FB6DD8-BC92-401E-B8CC-C71B01F47ECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3FB6DD8-BC92-401E-B8CC-C71B01F47ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3FB6DD8-BC92-401E-B8CC-C71B01F47ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3FB6DD8-BC92-401E-B8CC-C71B01F47ECB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {58A30173-0DA2-483E-B403-CF392FC2208D}
+	EndGlobalSection
+EndGlobal
