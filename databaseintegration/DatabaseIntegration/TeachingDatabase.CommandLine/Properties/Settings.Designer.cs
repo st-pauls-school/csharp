@@ -22,5 +22,14 @@ namespace TeachingDatabase.CommandLine.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("94")]
+        public int Interval {
+            get {
+                return ((int)(this["Interval"]));
+            }
+        }
     }
 }
