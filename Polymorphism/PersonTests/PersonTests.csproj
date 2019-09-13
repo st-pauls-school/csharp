@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ObjectLibrary\ObjectLibrary.csproj">
-      <Project>{4F2BA4FF-328B-4B3B-A6E4-54DA178DC46A}</Project>
+      <Project>{4f2ba4ff-328b-4b3b-a6e4-54da178dc46a}</Project>
       <Name>ObjectLibrary</Name>
     </ProjectReference>
   </ItemGroup>
