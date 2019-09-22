@@ -197,7 +197,8 @@ namespace CountVonLibrary
                     previous = value;
                 } catch(OverflowException)
                 {
-                    Console.WriteLine("We've broken ulong. Reverting to previous value.");
+                    if(debug)
+                        Console.WriteLine("We've broken ulong. Reverting to previous value.");
                     value = previous;
                     break;
                 }
@@ -225,7 +226,8 @@ namespace CountVonLibrary
                         largest = trial;
                 } catch(OverflowException)
                 {
-                    Console.WriteLine("we're stretching ulong to its limits.");
+                    if(debug)
+                        Console.WriteLine("we're stretching ulong to its limits.");
                     overflow = true;
                     break;
                 }
