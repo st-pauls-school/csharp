@@ -1,5 +1,5 @@
 ﻿using System;
-using IterationClasses;
+using CountVonLibrary;
 
 namespace CountVonConsole
 {
@@ -7,40 +7,22 @@ namespace CountVonConsole
     {
         public static void Main(string[] args)
         {
-            var counter = new CountVonCount(true, true, false);
+            CountVonCount counter = new CountVonCount(true, true, false);
+            
+            Console.WriteLine("below a thousand, longest is {0}, {1} chars", counter.Longest, counter.Longest.Length);
 
-            var numbers = counter.NumbersOfIncreasingLength(1, 1000);
+            Tuple<ulong, string, bool> t140 = counter.FindLongest(140);
+            Console.WriteLine("{0} characters: {1}: {2}", 140, t140.Item1, t140.Item2);
+            Tuple<ulong, string, bool> t280 = counter.FindLongest(280, true);
+            Console.WriteLine("{0} characters: {1}: {2}", 280, t280.Item1, t280.Item2);
 
-            string longest = numbers[numbers.Count - 1].Item2;
-            int step = numbers[numbers.Count - 1].Item1;
+            HitAKey();
+        }
 
-            Console.WriteLine("below a thousand, longest is {0}, {1} chars", longest, longest.Length);
-
-            int limit = 140;
-            string tweet = longest;
-            UInt64 value = (ulong)step;
-
-            do
-            {
-                value *= 1000;
-                value += (ulong)step;
-                tweet = counter.Generate(value);
-            } while (tweet.Length + longest.Length <= limit);
-
-            Console.WriteLine("{0} would break. ({1})", tweet, tweet.Length);
-
-            int powers = (int)Math.Ceiling(Math.Log10(value));
-
-            for (int i = 0; i < numbers.Count; i++)
-            {
-                UInt64 trial = (UInt64)numbers[i].Item1 * (UInt64)Math.Pow(10, powers);
-                trial += value;
-                string trialString = counter.Generate(trial);
-                Console.WriteLine("{0}: {1}", trialString.Length, trialString);
-
-            }
-
-            Console.ReadLine();
+        private static void HitAKey()
+        {
+            Console.WriteLine("Hit a key to continue ...");
+            Console.ReadKey();
         }
     }
 }

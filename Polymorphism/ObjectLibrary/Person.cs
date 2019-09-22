@@ -12,7 +12,7 @@ namespace ObjectLibrary
         readonly protected string _email;
         readonly protected DateTime _dob;
 
-        public Person(string f, string l, string e, DateTime dt)
+        public Person(string f = "first", string l, string e = "me@domain.com", DateTime dt)
         {
             _first = f;
             _last = l;

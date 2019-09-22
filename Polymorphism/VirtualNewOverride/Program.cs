@@ -21,8 +21,7 @@ namespace VirtualNewOverride
             BaseClass bcdc = new DerivedClass();
 
             List<BaseClass> lb = new List<BaseClass> { bc, dc, bcdc };
-            List<DerivedClass> ld = new List<DerivedClass>
-            {  bc, dc, bcdc};
+            // List<DerivedClass> ld = new List<DerivedClass> {  bc, dc, bcdc};
 
             bc.Method1();
             dc.Method1();

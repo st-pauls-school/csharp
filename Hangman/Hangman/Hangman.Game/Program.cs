@@ -30,7 +30,7 @@ namespace Hangman.Game
         {
             // read in the list of words into a list of strings 
             IList<string> words = File.ReadLines(@"words.txt").ToList();
-
+            
             // then pick a random number from the list - set up the new Monitor object which deals with the computer monitoring the guesses 
             Monitor m = new Monitor(words[new Random().Next(words.Count)]);
 

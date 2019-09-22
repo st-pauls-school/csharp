@@ -1,0 +1,129 @@
+
+
+
+
+
+
+
+
+Visual Studio 2017
+
+
+Using C# from Microsoft
+
+Bitwise XOR - ^
+
+
+
+
+
+
+
+
+29/10/18
+
+Google Classroom
+
+
+
+
+
+
+
+
+
+
+helpful comments
+
+
+
+Logical OR
+
+
+
+
+
+Bitwise OR - |
+
+
+Conditional expressions
+
+
+
+
+
+
+
+
+
+
+
+tertiary using ? and :
+
+
+
+
+
+
+
+Recursive methods
+St Paul's School
+
+
+
+
+
+
+
+
+
+
+
+Selection
+Bitwise AND - &
+
+
+
+
+
+
+
+October Test
+
+
+Computer Gallery
+Boolean
+
+
+
+
+
+
+
+
+
+
+
+
+
+Old Science Block
+Logical AND
+
+
+
+
+
+Console.WriteLine()
+
+
+
+
+
+
+A-Level Computing
+
+
+
+
+
+

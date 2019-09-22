@@ -9,26 +9,39 @@ namespace IterationClasses
         readonly string _comma;
         readonly string _and;
         readonly string _has;
+        readonly IList<Tuple<int, string>> _numbers;
 
         IList<string> _units = new List<string> { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
         IList<string> _teens = new List<string> { "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
         IList<string> _tens = new List<string> { "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
-        IList<string> _kilos = new List<string> { "thousand", "million", "billion", "trillion" };
+        IList<string> _kilos = new List<string> { "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion", "septillion" };
+
+        public string Longest => _numbers[_numbers.Count - 1].Item2;
+        public int Step => _numbers[_numbers.Count - 1].Item1;
 
         public CountVonCount(bool commas, bool ands, bool has)
         {
             _comma = commas ? "," : "";
             _and = ands ? "and" : "";
             _has = has ? " ah! ah! ah!" : "";
+            
+            _numbers = NumbersOfIncreasingLength(1, 1000);
+
         }
 
-        public List<Tuple<int, string>> NumbersOfIncreasingLength(int from, int to)
+        /// <summary>
+        /// The longest numbers are they increase in value
+        /// </summary>
+        /// <param name="from">the lower bound of the range</param>
+        /// <param name="to">the upper bound</param>
+        /// <returns>lengthening numbers as they increas in value</returns>
+        public IList<Tuple<int, string>> NumbersOfIncreasingLength(int from, int to)
         {
-            List<Tuple<int, string>> rv = new List<Tuple<int, string>>();
+            IList<Tuple<int, string>> rv = new List<Tuple<int, string>>();
             int longest = 0;
             for (int counter = from; counter <= to; counter++)
             {
-                string number = Generate((UInt64)counter);
+                string number = Generate((ulong)counter);
                 if (number.Length > longest)
                 {
                     rv.Add(new Tuple<int, string>(counter, number));
@@ -38,8 +51,12 @@ namespace IterationClasses
             return rv;
         }
 
-
-        public string Generate(UInt64 number)
+        /// <summary>
+        /// the written form of a number as spoken by the Count. 
+        /// </summary>
+        /// <param name="number">the number</param>
+        /// <returns>the text equivalent</returns>
+        public string Generate(ulong number)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(GenerateNumber(number));
@@ -48,7 +65,12 @@ namespace IterationClasses
             return sb.ToString();
         }
 
-        string GenerateNumber(UInt64 number)
+        /// <summary>
+        /// the private method, without any paraphenalia 
+        /// </summary>
+        /// <param name="number">the number</param>
+        /// <returns>the words</returns>
+        string GenerateNumber(ulong number)
         {
             StringBuilder sb = new StringBuilder();
             if (number == 0)
@@ -82,7 +104,13 @@ namespace IterationClasses
             return sb.ToString();
         }
 
-        public string TripleDigits(int number, bool notall)
+        /// <summary>
+        /// the final three digits in words 
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="notall"></param>
+        /// <returns></returns>
+        string TripleDigits(int number, bool notall)
         {
             if (number == 0)
             {
@@ -114,6 +142,11 @@ namespace IterationClasses
             return rv;
         }
 
+        /// <summary>
+        /// the final two digits in words
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         public string DoubleDigits(int number)
         {
             if (number == 0)
@@ -138,5 +171,58 @@ namespace IterationClasses
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Given the maximum number of characters, just how high can we go? 
+        /// </summary>
+        /// <param name="limit">number of characters</param>
+        /// <param name="debug">show your working</param>
+        /// <returns>how high we can go</returns>
+        public Tuple<ulong, string> FindLongest(int limit, bool debug=false)
+        {
+            string tweet = Longest;
+            ulong value = (ulong)Step;
+
+            ulong previous = 0;
+            do
+            {
+                try
+                {
+                    checked
+                    {
+                        value *= 1000;
+                        value += (ulong)Step;
+                    }
+                    tweet = Generate(value);
+                    if (debug)
+                        Console.WriteLine("{0}/{1}/{2}", tweet.Length, value, tweet);
+                    if (value < previous)
+                    {
+                        Console.WriteLine("We've broken ulong");
+                        break;
+                    }
+                    previous = value;
+                } catch()
+
+            } while (tweet.Length + Longest.Length <= limit);
+
+
+            int powers = (int)Math.Ceiling(Math.Log10(value));
+
+            ulong largest = value;
+            for (int i = 0; i < _numbers.Count; i++)
+            {
+                ulong trial = (ulong)_numbers[i].Item1 * (ulong)Math.Pow(10, powers);
+                trial += value;
+                string trialString = Generate(trial);
+                if(debug)
+                    Console.WriteLine("{0}: {1}", trialString.Length, trialString);
+                if (trialString.Length <= limit && trial > largest)
+                    largest = trial;
+            }
+            var rv = new Tuple<ulong, string>(largest, Generate(largest));
+            if(debug)
+                Console.WriteLine("I think the largest is going to be: {0}", rv.Item2);
+            return rv;
+        }
     }
 }

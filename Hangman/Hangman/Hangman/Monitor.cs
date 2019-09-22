@@ -3,6 +3,21 @@ using System.Linq;
 
 namespace Hangman
 {
+    // todo: move the classes into a hangman.Library 
+
+    // todo: human Setter needs to interact with the human to get the information to return to the caller 
+    // todo: computer setter just needs to return the information 
+
+    public interface ISetter
+    {
+        bool Guess(char c);
+        string Mask { get; }
+        int Score { get; }
+        bool Won { get; }
+    }
+
+    
+
     public class Monitor
     {
         // the list of characters already guessed 
