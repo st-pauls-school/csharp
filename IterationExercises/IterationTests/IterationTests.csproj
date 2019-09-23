@@ -50,6 +50,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IterationUtilitiesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestVonCount.cs" />
   </ItemGroup>
@@ -60,6 +61,10 @@
     <ProjectReference Include="..\CountVonLibrary\CountVonLibrary.csproj">
       <Project>{0cc8cb67-2b86-4234-830b-03cd76713ad9}</Project>
       <Name>CountVonLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IterationLibrary\IterationLibrary.csproj">
+      <Project>{ff56157b-723b-44c2-9ab8-5aad59757f25}</Project>
+      <Name>IterationLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

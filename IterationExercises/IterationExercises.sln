@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountVonConsole", "CountVon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountVonLibrary", "CountVonLibrary\CountVonLibrary.csproj", "{0CC8CB67-2B86-4234-830B-03CD76713AD9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IterationLibrary", "IterationLibrary\IterationLibrary.csproj", "{FF56157B-723B-44C2-9AB8-5AAD59757F25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IterationConsole", "IterationConsole\IterationConsole.csproj", "{91482E78-A36E-45CF-BFFE-DAD8DD8E56CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{0CC8CB67-2B86-4234-830B-03CD76713AD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CC8CB67-2B86-4234-830B-03CD76713AD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CC8CB67-2B86-4234-830B-03CD76713AD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF56157B-723B-44C2-9AB8-5AAD59757F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF56157B-723B-44C2-9AB8-5AAD59757F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF56157B-723B-44C2-9AB8-5AAD59757F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF56157B-723B-44C2-9AB8-5AAD59757F25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91482E78-A36E-45CF-BFFE-DAD8DD8E56CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91482E78-A36E-45CF-BFFE-DAD8DD8E56CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91482E78-A36E-45CF-BFFE-DAD8DD8E56CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91482E78-A36E-45CF-BFFE-DAD8DD8E56CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
