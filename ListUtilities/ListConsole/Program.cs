@@ -10,7 +10,20 @@ namespace ListConsole
     {
         static void Main(string[] args)
         {
-            List<int> listOfIntegers = new List<int>() { 1, 2, 3, 4 };
+            List<int> listOfIntegers = new List<int>() { 1, 2, -4, 3, 4 };
+
+
+            int s = listOfIntegers.Sum();
+            int m1 = listOfIntegers.Min();
+
+            List<int> negativeNumbers = 
+                listOfIntegers
+                    .Where(i => i < 0)
+                    .Select(i => 2 *i)
+                    .ToList();
+
+
+
 
             Double(listOfIntegers);
 
@@ -59,6 +72,11 @@ namespace ListConsole
         {
             for (int i = 0; i < l.Count; i++)
                 l[i] *= 2;
+        }
+        static List<int> CreateANewList(List<int> incoming)
+        {
+            List<int> returnValue = new List<int>() { 2, 3, 5, 7 };
+            return returnValue;
         }
     }
 }
