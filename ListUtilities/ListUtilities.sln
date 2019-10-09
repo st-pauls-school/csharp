@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListFunctions", "ListFuncti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListConsole", "ListConsole\ListConsole.csproj", "{E3BE3D6A-DDDF-455C-BF40-B7282DDC18C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListTests", "ListTests\ListTests.csproj", "{C5C58176-5E3B-4369-AFEF-BCE4D2C337A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E3BE3D6A-DDDF-455C-BF40-B7282DDC18C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3BE3D6A-DDDF-455C-BF40-B7282DDC18C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3BE3D6A-DDDF-455C-BF40-B7282DDC18C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5C58176-5E3B-4369-AFEF-BCE4D2C337A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5C58176-5E3B-4369-AFEF-BCE4D2C337A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5C58176-5E3B-4369-AFEF-BCE4D2C337A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5C58176-5E3B-4369-AFEF-BCE4D2C337A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
