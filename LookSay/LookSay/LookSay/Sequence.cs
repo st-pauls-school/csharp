@@ -15,6 +15,7 @@ namespace LookSay
             _cache = new List<string> { seed.ToString()};
         }
 
+
         public string Generate(int number)
         {
             string result = _cache[0];
@@ -37,27 +38,39 @@ namespace LookSay
         string MakeNext(string incoming)
         {
             StringBuilder sb = new StringBuilder();
-            char previous = (char)0;
-            uint counter = 0;
-            foreach (char c in incoming)
+            int u = 0;
+            try
             {
-                if (c == previous)
+                char previous = (char) 0;
+                uint counter = 0;
+                foreach (char c in incoming)
                 {
-                    counter++;
-                    continue;
+                    if (c == previous)
+                    {
+                        counter++;
+                        continue;
+                    }
+
+                    if (counter > 0)
+                    {
+                        sb.Append(counter);
+                        sb.Append(previous);
+                    }
+
+                    previous = c;
+                    counter = 1;
+                    u = sb.Length;
                 }
 
-                if (counter > 0)
-                {
-                    sb.Append(counter);
-                    sb.Append(previous);
-                }
-
-                previous = c;
-                counter = 1;
+                sb.Append(counter);
+                sb.Append(previous);
             }
-            sb.Append(counter);
-            sb.Append(previous);
+            catch (OutOfMemoryException ome)
+            {
+                Console.WriteLine("{1}: ran out of SB at {0}", u, ome.Message);
+                throw;
+            }
+            
 
             return sb.ToString();
 

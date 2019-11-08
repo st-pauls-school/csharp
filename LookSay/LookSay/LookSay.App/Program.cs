@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.IO;
 
@@ -8,6 +9,14 @@ namespace LookSay.App
     {
         static void Main(string[] args)
         {
+            if (args.Length == 3)
+            {
+                Sequence s = new Sequence(int.Parse(args[0]));
+
+                DoFor(s, int.Parse(args[1]), int.Parse(args[2]));
+                return;
+            }
+
             Console.Write("Seed? ");
             string seed = Console.ReadLine();
             long ms = -1;
@@ -18,26 +27,37 @@ namespace LookSay.App
                 string howMany = Console.ReadLine();
                 if (int.TryParse(howMany, out int index))
                 {
-                    using(StreamWriter sw = new StreamWriter("output.txt"))
-                    {
-                        Stopwatch timer = new Stopwatch();
-                        timer.Start();
-                        for (int i = index-3; i <= index; i++)
-                        {
-                            string res = s.Generate(i);
-                            sw.WriteLine("[{0}]: {1} ({2})", i, res, res.Length);
-                            ms = timer.ElapsedMilliseconds;
-                            string sf = $"clock: {i} in {ms}ms";
-                            sw.WriteLine(sf);
-                            Console.WriteLine(sf);
-                        }
-                        timer.Stop();
-                    }
+                    ms = DoFor(s, index, index+1);
                 }
             }
 
             Console.WriteLine("done, {0}ms", ms);
             Console.ReadKey();
         }
+
+
+        static long DoFor(Sequence s, int from, int to)
+        {
+            long ms = -1;
+            using(StreamWriter sw = new StreamWriter("output.txt"))
+            {
+                Stopwatch timer = new Stopwatch();
+                timer.Start();
+                for (int i = from; i <= to; i++)
+                {
+                    string res = s.Generate(i);
+                    Console.WriteLine("{1}: about to write {0} chars", res.Length, i);
+                    sw.WriteLine("[{0}]: {3}{1}{3}({2}){3}", i, res, res.Length, Environment.NewLine);
+                    ms = timer.ElapsedMilliseconds;
+                    string sf = $"clock: {i} in {ms}ms";
+                    sw.WriteLine(sf);
+                    Console.WriteLine(sf);
+                }
+                timer.Stop();
+            }
+
+            return ms;
+        }
     }
+
 }
