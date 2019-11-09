@@ -35,7 +35,13 @@ namespace LookSay.App
             Console.ReadKey();
         }
 
-
+        /// <summary>
+        /// Loops in the given range, writing to an output text file
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns></returns>
         static long DoFor(Sequence s, int from, int to)
         {
             long ms = -1;
