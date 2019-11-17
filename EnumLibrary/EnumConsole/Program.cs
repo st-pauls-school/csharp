@@ -27,6 +27,14 @@ namespace EnumConsole
             else
                 Console.WriteLine("That's not a month");
 
+            string m2 = "5";
+            success = Enum.TryParse<Months>(m2, out Months mo2);
+
+            if (success)
+                Console.WriteLine(mo2.ToString());
+            else
+                Console.WriteLine("That's not a month");
+
             int i = (int)mo;
             mo++;
 
@@ -38,6 +46,11 @@ namespace EnumConsole
                
             }
 
+            foreach (string str in Enum.GetNames(typeof(Months)))
+                Console.WriteLine(str);
+
+            
+
 
             
 
@@ -48,6 +61,13 @@ namespace EnumConsole
             Console.WriteLine("The card is red: {0}", isRed);
 
 //            Console.WriteLine("Sp|Di: {0}", (Suits.Spades | Suits.Diamonds).ToString());
+
+            for(int c2 = 0; c2 < 16; c2++)
+            {
+                Suits s2 = (Suits)c2;
+                Console.WriteLine(s2);
+
+            }
             Console.Read();
         }
     }

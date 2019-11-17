@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EnumLibrary
 {
-//    [Flags]
+    [Flags]
     public enum Suits
     {
         Spades = 1,
