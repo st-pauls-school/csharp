@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LookSay", "LookSay\LookSay.csproj", "{85664DE0-713F-4C50-B147-6360BF9AE77E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LookSay.Tests", "LookSay.Tests\LookSay.Tests.csproj", "{B070844D-AFD9-486D-9FCC-41C632F8F808}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LookSay.App", "LookSay.App\LookSay.App.csproj", "{DC45D5D1-A648-4026-859F-586CC5D8D17C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85664DE0-713F-4C50-B147-6360BF9AE77E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85664DE0-713F-4C50-B147-6360BF9AE77E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85664DE0-713F-4C50-B147-6360BF9AE77E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85664DE0-713F-4C50-B147-6360BF9AE77E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B070844D-AFD9-486D-9FCC-41C632F8F808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B070844D-AFD9-486D-9FCC-41C632F8F808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B070844D-AFD9-486D-9FCC-41C632F8F808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B070844D-AFD9-486D-9FCC-41C632F8F808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC45D5D1-A648-4026-859F-586CC5D8D17C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC45D5D1-A648-4026-859F-586CC5D8D17C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC45D5D1-A648-4026-859F-586CC5D8D17C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC45D5D1-A648-4026-859F-586CC5D8D17C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
