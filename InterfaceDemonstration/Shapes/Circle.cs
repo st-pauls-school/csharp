@@ -21,6 +21,11 @@
             throw new System.NotImplementedException();
         }
 
+        public bool Equals(IShape other)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public double Perimeter()
         {
             throw new System.NotImplementedException();
