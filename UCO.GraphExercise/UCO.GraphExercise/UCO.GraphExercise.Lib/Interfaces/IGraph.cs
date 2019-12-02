@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using UCO.GraphExercise.Lib.Enums;
 
-namespace UCO.GraphExercise.Lib
+namespace UCO.GraphExercise.Lib.Interfaces
 {
-    public interface IGraph<T> 
+    public interface IGraph<T> where T : IEquatable<T>
     {
         bool Connected { get; }
         bool Cyclic { get; }
@@ -14,20 +16,6 @@ namespace UCO.GraphExercise.Lib
         IGraph<T> MinimumSpanningTree(MinimalAlgorithms algm);
         IList<IVertex<T>> Traversal(TreeTraversalMethods direction);
         IList<IVertex<T>> DeletionOrder { get; }
-    }
-    public interface IVertex<T>
-    {
-
-    }
-
-    public enum TreeTraversalMethods
-    {
-        BreadthFirst, DepthFirst
-    }
-
-    public enum MinimalAlgorithms
-    {
-        Prim, Kruskal
     }
 
 }
