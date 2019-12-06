@@ -49,11 +49,22 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="DirectedUnweightedTests.cs" />
+    <Compile Include="DirectedWeightedTests.cs" />
+    <Compile Include="GraphTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UndirectedUnweightedTests.cs" />
+    <Compile Include="UndirectedWeightedTests.cs" />
+    <Compile Include="VertexTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UCO.GraphExercise.Lib\UCO.GraphExercise.Lib.csproj">
+      <Project>{efccbb0a-5c95-407c-af10-bd6eec497850}</Project>
+      <Name>UCO.GraphExercise.Lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

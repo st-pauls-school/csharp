@@ -41,8 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IGraph.cs" />
+    <Compile Include="Classes\ExtensionMethods.cs" />
+    <Compile Include="Classes\Graph.cs" />
+    <Compile Include="Classes\GraphFactory.cs" />
+    <Compile Include="Classes\Vertex.cs" />
+    <Compile Include="Interfaces\IGraph.cs" />
+    <Compile Include="Enums\MinimalAlgorithms.cs" />
+    <Compile Include="Interfaces\IGraphFactory.cs" />
+    <Compile Include="Interfaces\IVertex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Enums\TreeTraversalMethods.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

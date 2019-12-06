@@ -17,5 +17,10 @@ namespace UCO.GraphExercise.Lib.Classes
         {
             return Value.Equals(other.Value);
         }
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
 }

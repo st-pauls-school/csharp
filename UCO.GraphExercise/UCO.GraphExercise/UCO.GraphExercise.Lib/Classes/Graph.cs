@@ -8,7 +8,7 @@ using UCO.GraphExercise.Lib.Interfaces;
 
 namespace UCO.GraphExercise.Lib.Classes
 {
-    public class Graph<T> : IGraph<T> where T : IEquatable<T>
+    public class Graph<T> : IGraph<T> where T : IEquatable<T>, IComparable<T>
     {
         #region private member variables 
         readonly IList<IVertex<T>> _listOfVertices;
@@ -25,12 +25,30 @@ namespace UCO.GraphExercise.Lib.Classes
         public bool Directed { get { return _directed; } }
 
         public bool Weighted { get { return _weighted; } }
+
+        public int TotalWeight
+        {
+            get
+            {
+                return _adjacencyMatrix.Select(row => row.Select(i => i.HasValue ? i.Value : 0).Sum()).Sum() / (_directed ? 1 : 2);
+            }
+        }
+
+        public int EdgeCount
+        {
+            get
+            {
+                return _adjacencyMatrix.Select(row => row.Select(i => i.HasValue && i.Value > 0 ? 1 : 0).Sum()).Sum() / (_directed ? 1 : 2);
+            }
+        }
+
+
+
         #endregion
 
         #region Constructors
-        // todo: consider the Graph Factory pattern
         // todo: what if more than vertices have the same name? 
-        public Graph(IList<T> vertices, bool directed, bool weighted)
+        internal Graph(IList<T> vertices, bool directed, bool weighted)
         {
             _directed = directed;
             _weighted = weighted;
@@ -44,13 +62,13 @@ namespace UCO.GraphExercise.Lib.Classes
             }
 
         }
-        public Graph(IList<T> vertices, IList<Tuple<T,T>> edges, bool directed) : this(vertices, directed, false)
+        internal Graph(IList<T> vertices, IList<Tuple<T,T>> edges, bool directed) : this(vertices, directed, false)
         {
             foreach (Tuple<T, T> e in edges)
                 AddEdge(e.Item1, e.Item2, 1);
         }
 
-        public Graph(IList<T> vertices, IList<Tuple<T, T, int>> edges, bool directed) : this(vertices, directed, true)
+        internal Graph(IList<T> vertices, IList<Tuple<T, T, int>> edges, bool directed) : this(vertices, directed, true)
         {
             foreach (Tuple<T, T, int> e in edges)
                 AddEdge(e.Item1, e.Item2, e.Item3);
@@ -84,12 +102,12 @@ namespace UCO.GraphExercise.Lib.Classes
             throw new NotImplementedException();
         }
 
-        public int ShortestPath(IVertex<T> v1, IVertex<T> v2)
+        public int ShortestPath(T v1, T v2)
         {
             throw new NotImplementedException();
         }
 
-        public IList<IVertex<T>> Traversal(TreeTraversalMethods direction)
+        public IList<IVertex<T>> Traversal(TreeTraversalMethods direction, T root)
         {
             throw new NotImplementedException();
         }
