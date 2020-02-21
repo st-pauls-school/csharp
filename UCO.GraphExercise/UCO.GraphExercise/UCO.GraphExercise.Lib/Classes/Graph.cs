@@ -14,7 +14,7 @@ namespace UCO.GraphExercise.Lib.Classes
         readonly IList<IVertex<T>> _listOfVertices;
         readonly bool _directed;
         readonly bool _weighted;
-        readonly IList<IList<int?>> _adjacencyMatrix; // rows are from, columns are to
+        readonly IList<IList<int?>> _adjacencyMatrix; // rows are from, columns are to - in practice this means that each element of the outer list is the adjacency list for that vertex
         #endregion
 
         #region IGraph Properties 
