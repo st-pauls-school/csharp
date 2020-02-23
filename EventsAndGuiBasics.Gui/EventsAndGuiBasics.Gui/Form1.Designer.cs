@@ -31,6 +31,7 @@
             this.btnStartTicker = new System.Windows.Forms.Button();
             this.btnStopTicker = new System.Windows.Forms.Button();
             this.lblTicker = new System.Windows.Forms.Label();
+            this.cbList = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnStartTicker
@@ -63,11 +64,20 @@
             this.lblTicker.TabIndex = 2;
             this.lblTicker.Text = "<empty>";
             // 
+            // cbList
+            // 
+            this.cbList.FormattingEnabled = true;
+            this.cbList.Location = new System.Drawing.Point(445, 114);
+            this.cbList.Name = "cbList";
+            this.cbList.Size = new System.Drawing.Size(121, 21);
+            this.cbList.TabIndex = 3;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbList);
             this.Controls.Add(this.lblTicker);
             this.Controls.Add(this.btnStopTicker);
             this.Controls.Add(this.btnStartTicker);
@@ -83,6 +93,7 @@
         private System.Windows.Forms.Button btnStartTicker;
         private System.Windows.Forms.Button btnStopTicker;
         private System.Windows.Forms.Label lblTicker;
+        private System.Windows.Forms.ComboBox cbList;
     }
 }
 

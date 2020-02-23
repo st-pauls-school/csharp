@@ -14,12 +14,16 @@ namespace EventsAndGuiBasics.Gui
     public partial class frmMain : Form
     {
         Ticker _ticker;
+        IList<int> _primes;
 
         public frmMain()
         {
             InitializeComponent();
             _ticker = new Ticker("Default message",2500);
             _ticker.Tick += _ticker_Tick;
+            _primes = new List<int> { 2, 3, 5, 7, 11, 13 };
+            cbList.DataSource = _primes;
+
             
         }
 
