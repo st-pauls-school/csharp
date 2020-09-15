@@ -1,6 +1,6 @@
 ﻿namespace TeachingDatabase.UI
 {
-    partial class Form1
+    partial class NamesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.namesComboBox = new System.Windows.Forms.ComboBox();
             this.lblSelected = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // namesComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
+            this.namesComboBox.FormattingEnabled = true;
+            this.namesComboBox.Location = new System.Drawing.Point(12, 12);
+            this.namesComboBox.Name = "namesComboBox";
+            this.namesComboBox.Size = new System.Drawing.Size(121, 21);
+            this.namesComboBox.TabIndex = 0;
+            this.namesComboBox.SelectedValueChanged += new System.EventHandler(this.namesComboBox_SelectedValueChanged);
             // 
             // lblSelected
             // 
@@ -49,16 +49,16 @@
             this.lblSelected.Size = new System.Drawing.Size(0, 13);
             this.lblSelected.TabIndex = 1;
             // 
-            // Form1
+            // NamesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblSelected);
-            this.Controls.Add(this.comboBox1);
-            this.Name = "Form1";
+            this.Controls.Add(this.namesComboBox);
+            this.Name = "NamesForm";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.NamesForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -66,7 +66,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox namesComboBox;
         private System.Windows.Forms.Label lblSelected;
     }
 }
