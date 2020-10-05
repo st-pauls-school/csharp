@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace IterationLibrary
 {
     public class QuietFunctions
     {
-        public static List<string> CountDown(int n)
+        public static string CountDown(int n)
         {
-            List<string> returnValue = new List<string>();
+            StringBuilder sb = new StringBuilder();
             for(int i = n; i > 0; i--)
             {
-                returnValue.Add(string.Format("{0}!", i));
+                sb.AppendLine(string.Format("{0}!", i));
             }
-            returnValue.Add("Blast-Off!");
-            return returnValue;
+            sb.AppendLine("Blast-Off!");
+            return sb.ToString();
         }
     }
 }
