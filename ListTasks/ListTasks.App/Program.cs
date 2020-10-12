@@ -26,6 +26,7 @@ namespace ListTasks.App
             // 1d 
             List<int> negs = GetTheNegs(listA);
             Debug.Assert(negs.Count == 0);
+            // ListC - we're expecting just one negative item in the list 
             negs = GetTheNegs(listC);
             Debug.Assert(negs.Count == 1);
             Debug.Assert(negs[0] == -2);
