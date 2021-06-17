@@ -75,6 +75,8 @@ namespace FoxesAndRabbits.App
             Console.ReadKey();
         }
 
+
+        // todo: no validation on the 
         private int InputCoordinate(char Coordinatename)
         {
             int Coordinate;

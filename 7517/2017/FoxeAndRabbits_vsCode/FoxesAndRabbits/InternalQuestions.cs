@@ -42,13 +42,13 @@ namespace InternalQuestions
           else
           {
             Console.Write("Landscape Size: ");
-            LandscapeSize = Convert.ToInt32(Console.ReadLine());
+            LandscapeSize = PositiveInteger();
             Console.Write("Initial number of warrens: ");
-            InitialWarrenCount = Convert.ToInt32(Console.ReadLine());
+            InitialWarrenCount = PositiveInteger();
             Console.Write("Initial number of foxes: ");
-            InitialFoxCount = Convert.ToInt32(Console.ReadLine());
+            InitialFoxCount = PositiveInteger();
             Console.Write("Randomness variability (percent): ");
-            Variability = Convert.ToInt32(Console.ReadLine());
+            Variability = PositiveInteger();
             FixedInitialLocations = false;
           }
           Sim = new Simulation(LandscapeSize, InitialWarrenCount, InitialFoxCount, Variability, FixedInitialLocations);
@@ -57,6 +57,17 @@ namespace InternalQuestions
       Console.ReadKey();
     }
 
+    // Q1a
+    static int PositiveInteger() {
+      int x;
+      do { 
+        x = Convert.ToInt32(Console.ReadLine());
+        if(x<0)
+          Console.WriteLine("Input value is negative, please try again.");
+        else  
+          return x;
+      } while(true);
+    }
     
   }
 
@@ -65,10 +76,13 @@ namespace InternalQuestions
     public Fox Fox;
     public Warren Warren;
 
-    public Location()
+    public char Terrain;
+
+    public Location(char t = ' ')
     {
       Fox = null;
       Warren = null;
+      Terrain = t;
     }
   }
 
@@ -204,6 +218,7 @@ namespace InternalQuestions
             {
               Console.WriteLine("Fox at (" + x + "," + y + "): ");
             }
+            CheckIfAnotherFoxIsTooClose(x,y); // Q2c
             Landscape[x, y].Fox.AdvanceGeneration(ShowDetail);
             if (Landscape[x, y].Fox.CheckIfDead())
             {
@@ -244,28 +259,53 @@ namespace InternalQuestions
       Console.WriteLine();
     }
 
+    // q2b 
+    void CheckIfAnotherFoxIsTooClose(int fx, int fy) {
+      bool update = false;
+      for (int x = 0; x < LandscapeSize; x++)
+      {
+        for (int y = 0; y < LandscapeSize; y++)
+        {
+          if(x != fx && y != fy && Landscape[x, y].Fox != null) {
+            if(DistanceBetween(fx, fy, x, y) <= 5)
+              update = true;  
+          }
+        }
+      }
+
+      if(update)
+        Landscape[fx,fy].Fox.ReduceLifeSpan();
+    }
     private void CreateLandscapeAndAnimals(int InitialWarrenCount, int InitialFoxCount, bool FixedInitialLocations)
     {
       for (int x = 0; x < LandscapeSize; x++)
       {
         for (int y = 0; y < LandscapeSize; y++)
         {
-          Landscape[x, y] = new Location();
+          char t = ' ';
+          if(x >= 1 && x <= 5 && y >= 7 && y <= 11)
+            t = 'F';
+          if(x >= 2 && x <= 4 && y >= 8 && y <= 10)
+            t = 'S';
+          if(x == 3 && y == 9)
+            t = 'P';
+
+          Landscape[x, y] = new Location(t);
         }
       }
       if (FixedInitialLocations)
       { 
-        Landscape[1, 1].Warren = new Warren(Variability, 38);
-        Landscape[2, 8].Warren = new Warren(Variability, 80);
-        Landscape[9, 7].Warren = new Warren(Variability, 20);
-        Landscape[10, 3].Warren = new Warren(Variability, 52);
-        Landscape[13, 4].Warren = new Warren(Variability, 67);
+        Landscape[1, 1].Warren = new Warren(Variability, 38, Landscape[1,1].Terrain);
+        Landscape[2, 8].Warren = new Warren(Variability, 80, Landscape[2,8].Terrain);
+        Landscape[9, 7].Warren = new Warren(Variability, 20, Landscape[9,7].Terrain);
+        Landscape[10, 3].Warren = new Warren(Variability, 52, Landscape[10,3].Terrain);
+        Landscape[13, 4].Warren = new Warren(Variability, 67, Landscape[13,4].Terrain);
         WarrenCount = 5;
-        Landscape[2, 10].Fox = new Fox(Variability);
-        Landscape[6, 1].Fox = new Fox(Variability);
-        Landscape[8, 6].Fox = new Fox(Variability);
-        Landscape[11, 13].Fox = new Fox(Variability);
-        Landscape[12, 4].Fox = new Fox(Variability);
+        Landscape[2, 10].Fox = new Fox(Variability, Landscape[2,10].Terrain);
+        Landscape[6, 1].Fox = new Fox(Variability, Landscape[6,1].Terrain);
+        Landscape[8, 6].Fox = new Fox(Variability, Landscape[8,6].Terrain);
+        Landscape[11, 13].Fox = new Fox(Variability, Landscape[11,13].Terrain);
+        Landscape[12, 4].Fox = new Fox(Variability, Landscape[12,4].Terrain);
         FoxCount = 5;
       }
       else
@@ -293,7 +333,7 @@ namespace InternalQuestions
       {
         Console.WriteLine("New Warren at (" + x + "," + y + ")");
       }
-      Landscape[x, y].Warren = new Warren(Variability);
+      Landscape[x, y].Warren = new Warren(Variability, Landscape[x,y].Terrain);
       WarrenCount++;
     }
 
@@ -308,7 +348,7 @@ namespace InternalQuestions
       if (ShowDetail) {
         Console.WriteLine("  New Fox at (" + x + "," + y + ")");
       }
-      Landscape[x, y].Fox = new Fox(Variability);
+      Landscape[x, y].Fox = new Fox(Variability, Landscape[x,y].Terrain);
       FoxCount++;
     }
     
@@ -363,6 +403,7 @@ namespace InternalQuestions
       Console.Write("    ");
       for (int x = 0; x < LandscapeSize; x++)
       {
+        Console.Write(' ');
         if (x < 10)
         {
           Console.Write(" ");
@@ -370,7 +411,7 @@ namespace InternalQuestions
         Console.Write(x + " |");
       }
       Console.WriteLine();
-      for (int x = 0; x <= LandscapeSize * 4 + 3; x++)
+      for (int x = 0; x <= LandscapeSize * 5 + 3; x++)
       {
         Console.Write("-");
       }
@@ -403,6 +444,7 @@ namespace InternalQuestions
           {
             Console.Write(" ");
           }
+          Console.Write(Landscape[x,y].Terrain);
           Console.Write("|");
         }
         Console.WriteLine();
@@ -420,26 +462,30 @@ namespace InternalQuestions
     private int Variability;
     private static Random Rnd = new Random();
 
-    public Warren(int Variability)
+    char _terrain;
+
+    public Warren(int Variability, char terrain)
     {
       this.Variability = Variability;
       Rabbits = new Rabbit[MaxRabbitsInWarren];
       RabbitCount = (int)(CalculateRandomValue((int)(MaxRabbitsInWarren / 4), this.Variability));
       for (int r = 0; r < RabbitCount; r++)
       {
-        Rabbits[r] = new Rabbit(Variability);
+        Rabbits[r] = new Rabbit(Variability, terrain);
       }
+      _terrain = terrain;
     }
 
-    public Warren(int Variability, int rabbitCount)
+    public Warren(int Variability, int rabbitCount, char terrain)
     {
       this.Variability = Variability;
       this.RabbitCount = rabbitCount;
       Rabbits = new Rabbit[MaxRabbitsInWarren];
       for (int r = 0; r < RabbitCount; r++)
       {
-        Rabbits[r] = new Rabbit(Variability);
+        Rabbits[r] = new Rabbit(Variability, terrain);
       }
+      _terrain = terrain;
     }
 
     private double CalculateRandomValue(int BaseValue, int Variability)
@@ -575,7 +621,7 @@ namespace InternalQuestions
           CombinedReproductionRate = (Rabbits[r].GetReproductionRate() + Rabbits[Mate].GetReproductionRate()) / 2;
           if (CombinedReproductionRate >= 1)
           {
-            Rabbits[RabbitCount + Babies] = new Rabbit(Variability, CombinedReproductionRate);
+            Rabbits[RabbitCount + Babies] = new Rabbit(Variability, CombinedReproductionRate, _terrain);
             Babies++;
           }
         }
@@ -707,7 +753,7 @@ namespace InternalQuestions
     private const int DefaultLifespan = 7;
     private const double DefaultProbabilityDeathOtherCauses = 0.1;
 
-    public Fox(int Variability)
+    public Fox(int Variability, char terrain)
         : base(DefaultLifespan, DefaultProbabilityDeathOtherCauses, Variability)
     {
       FoodUnitsNeeded = (int)(10 * base.CalculateRandomValue(100, Variability) / 100);
@@ -785,6 +831,10 @@ namespace InternalQuestions
       Console.Write("Food eaten " + FoodUnitsConsumedThisPeriod + " ");
       Console.WriteLine();
     }
+
+    public void ReduceLifeSpan() {
+      NaturalLifespan -= 1;
+    }
   }
 
   class Rabbit : Animal
@@ -800,7 +850,7 @@ namespace InternalQuestions
     private const double DefaultProbabilityDeathOtherCauses = 0.05;
     private Genders Gender;
 
-    public Rabbit(int Variability)
+    public Rabbit(int Variability, char terrain)
         : base(DefaultLifespan, DefaultProbabilityDeathOtherCauses, Variability)
     {
       ReproductionRate = DefaultReproductionRate * CalculateRandomValue(100, Variability) / 100;
@@ -814,7 +864,7 @@ namespace InternalQuestions
       }
     }
 
-    public Rabbit(int Variability, double ParentsReproductionRate)
+    public Rabbit(int Variability, double ParentsReproductionRate, char terrain)
         : base(DefaultLifespan, DefaultProbabilityDeathOtherCauses, Variability)
     {
       ReproductionRate = ParentsReproductionRate * CalculateRandomValue(100, Variability) / 100;
