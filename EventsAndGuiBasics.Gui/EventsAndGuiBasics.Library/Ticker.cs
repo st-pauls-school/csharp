@@ -39,9 +39,7 @@ namespace EventsAndGuiBasics.Library
 
         public void OnTick(DateTime sig)
         {
-            EventHandler<TickerEventArgs> handler = Tick;
-            if (null != handler)
-                handler(this, new TickerEventArgs(_message, sig));
+            Tick?.Invoke(this, new TickerEventArgs(_message, sig));
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseIntegration.Lib;
+using System;
 using System.Configuration;
 
 namespace TeachingDatabase.CommandLine
@@ -10,9 +11,9 @@ namespace TeachingDatabase.CommandLine
             int x = Properties.Settings.Default.Interval;
             ConnectionStringSettings cxnstring = ConfigurationManager.ConnectionStrings["sl"];
 
-            DatabaseIntegration.Lib.TeachingDatabase td = new DatabaseIntegration.Lib.TeachingDatabase(cxnstring.ConnectionString);
+            SchoolDatabase td = new SchoolDatabase(cxnstring.ConnectionString);
 
-            foreach(string s in td.Students("L8"))
+            foreach(string s in td.Students("Lower 8"))
             {
                 Console.WriteLine(s);
             }
