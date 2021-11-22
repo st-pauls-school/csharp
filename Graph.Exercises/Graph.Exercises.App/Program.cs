@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using Graph.Exercises.Lib;
 
 namespace Graph.Exercises.App
 {
@@ -6,9 +7,19 @@ namespace Graph.Exercises.App
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            IGraph<char> g1 = 
+                new GraphFactory<char>()
+                    .AddEdge('A','B')
+                    .AddEdge('B','C')
+                    .Create();
+            Debug.Assert(g1.IsConnected);
+            IGraph<char> g2 = 
+                new GraphFactory<char>()
+                    .AddEdge('A','B')
+                    .AddEdge('B','C')
+                    .AddNode('D')
+                    .Create();
+            Debug.Assert(!g2.IsConnected);
         }
-    }
-
-    
+    }    
 }

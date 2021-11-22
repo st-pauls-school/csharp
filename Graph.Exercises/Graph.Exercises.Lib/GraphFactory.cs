@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Graph.Exercises.Lib
 {
-    class GraphFactory<T> : IGraphFactory<T>
+    public class GraphFactory<T> : IGraphFactory<T>
         where T : IComparable<T>
     {
 
@@ -15,12 +15,12 @@ namespace Graph.Exercises.Lib
             _edges = new List<Edge<T>>();
         }
 
-        public IGraphFactory<T> AddEdge(T value1, T value2)
+        public IGraphFactory<T> AddEdge(T value1, T value2, double? weight = null)
         {
             // add the edges in value order 
             Edge<T> edge = (value1.CompareTo(value2) < 0) 
-                ? new Edge<T>(Find(value1), Find(value2))
-                : new Edge<T>(Find(value2), Find(value1));
+                ? new Edge<T>(Find(value1), Find(value2), weight)
+                : new Edge<T>(Find(value2), Find(value1), weight);
             _edges.Add(edge);
             return this;
             
