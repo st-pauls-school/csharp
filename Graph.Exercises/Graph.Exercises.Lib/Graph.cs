@@ -4,14 +4,20 @@ using System.Linq;
 
 namespace Graph.Exercises.Lib
 {
-    class Graph<T> : IGraph<T>  
+    class Graph<T> 
+        : IGraph<T>  
         where T : IComparable<T> {
+
         readonly IList<Node<T>> _nodes;
         readonly IList<Edge<T>> _edges;
+        readonly bool _directed;
 
-        internal Graph(IList<Node<T>> nodes, IList<Edge<T>> edges) {
+        internal Graph(IList<Node<T>> nodes, IList<Edge<T>> edges) : this(false, nodes, edges) { } 
+
+        internal Graph(bool directed, IList<Node<T>> nodes, IList<Edge<T>> edges) {
             _nodes = nodes;
             _edges = edges;
+            _directed = directed;
         }
 
         IEnumerable<Node<T>> FromHere(T value) {
@@ -31,6 +37,7 @@ namespace Graph.Exercises.Lib
                 fromHere.Enqueue(_nodes[0]);
                 values.Remove(_nodes[0].Value);
                 
+                // todo : directed vs undirected traversal 
                 while(fromHere.Count > 0) {
                     Node<T> popped = fromHere.Dequeue();
                     foreach(Node<T> f in FromHere(popped.Value)) {
