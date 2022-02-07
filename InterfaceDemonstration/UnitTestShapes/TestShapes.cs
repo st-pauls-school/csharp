@@ -6,7 +6,7 @@ namespace UnitTestShapes
     [TestClass]
     public class TestShapes
     {
-        IShape sq, ci;
+        
 
         [TestInitialize]
         public void Initialise()
@@ -41,7 +41,7 @@ namespace UnitTestShapes
         [TestMethod]
         public void TestCompare()
         {
-            Assert.AreEqual(1, sq.CompareTo(ci));
+            Assert.AreEqual(-1, sq.CompareTo(ci));
         }
 
     }

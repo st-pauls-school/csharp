@@ -9,16 +9,20 @@ namespace Graph.Exercises.Lib
 
         readonly IList<Node<T>> _nodes;
         readonly IList<Edge<T>> _edges;
+        readonly bool _directed;
 
-        public GraphFactory() {
+        public GraphFactory() : this(false) { }
+        public GraphFactory(bool directed)
+        {
             _nodes = new List<Node<T>>();
             _edges = new List<Edge<T>>();
+            _directed = directed;
         }
 
         public IGraphFactory<T> AddEdge(T value1, T value2, double? weight = null)
         {
-            // add the edges in value order 
-            Edge<T> edge = (value1.CompareTo(value2) < 0) 
+            // todo: assumption of undirected - so we add the edges in value order 
+            Edge<T> edge = _directed || (value1.CompareTo(value2) < 0) 
                 ? new Edge<T>(Find(value1), Find(value2), weight)
                 : new Edge<T>(Find(value2), Find(value1), weight);
             _edges.Add(edge);
@@ -35,7 +39,7 @@ namespace Graph.Exercises.Lib
 
         public IGraph<T> Create()
         {
-            return new Graph<T>(_nodes, _edges);
+            return new Graph<T>(_directed, _nodes, _edges);
         }
 
         Node<T> Find(T value) {
